@@ -124,7 +124,7 @@ RUN apt-get update \
     fftw3 \
     libshp2 \
     gdal-bin \
-    # libpython3.9 \
+    libpython3.10 \
     python3 \
     python3-gdal \
     python3-numpy \
@@ -139,12 +139,12 @@ RUN apt-get update \
 RUN python3 -c 'import sys; print(str(sys.version_info[0]) + "." + str(sys.version_info[1]))'
 
 RUN \
-  mkdir -p /usr/local/lib/python3.9/dist-packages/jiplib
+  mkdir -p /usr/local/lib/python3.10/dist-packages/jiplib
 
-COPY --from=pyjeo-dev /usr/local/lib/python3.9/dist-packages/pyjeo-1.0.8-py3.9.egg /usr/local/lib/python3.9/dist-packages
-COPY --from=pyjeo-dev /usr/local/lib/python3.9/dist-packages/jiplib/__init__.py /usr/local/lib/python3.9/dist-packages/jiplib
-COPY --from=pyjeo-dev /usr/local/lib/python3.9/dist-packages/jiplib/_jiplib.so /usr/local/lib/python3.9/dist-packages/jiplib
-COPY --from=pyjeo-dev /usr/local/lib/python3.9/dist-packages/jiplib/jiplib.py /usr/local/lib/python3.9/dist-packages/jiplib
+COPY --from=pyjeo-dev /usr/local/lib/python3.9/dist-packages/pyjeo-1.0.8-py3.9.egg /usr/local/lib/python3.10/dist-packages
+COPY --from=pyjeo-dev /usr/local/lib/python3.9/dist-packages/jiplib/__init__.py /usr/local/lib/python3.10/dist-packages/jiplib
+COPY --from=pyjeo-dev /usr/local/lib/python3.9/dist-packages/jiplib/_jiplib.so /usr/local/lib/python3.10/dist-packages/jiplib
+COPY --from=pyjeo-dev /usr/local/lib/python3.9/dist-packages/jiplib/jiplib.py /usr/local/lib/python3.10/dist-packages/jiplib
 COPY --from=pyjeo-dev /usr/local/lib/libmiallib_generic.so.1.0.2 /usr/local/lib
 COPY --from=pyjeo-dev /usr/local/lib/libjiplib.so.1.0.8 /usr/local/lib
 
