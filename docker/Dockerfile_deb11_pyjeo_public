@@ -41,6 +41,7 @@ RUN apt-get update \
     python3-xarray \
     python3-netcdf4 \
     python3-pyproj \
+    python3-gdal \
     curl \
     git \
     gzip \
@@ -107,11 +108,5 @@ RUN cd $INSTALL_HOME \
     && cd $INSTALL_HOME \
     && rm -rf $INSTALL_HOME/jeolib-pyjeo*
     #&& rm pyjeo.tar.gz
-
-RUN apt-get update \
-  && apt-get upgrade -y \
-  && DEBIAN_FRONTEND=noninteractive  apt-get install -y  --no-install-recommends \
-    python3-gdal \
-  && rm -rf /var/lib/apt/lists/*
 
 RUN rm -rf /usr/local/share/jeolib-pyjeo*
