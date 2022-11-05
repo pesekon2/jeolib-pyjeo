@@ -118,8 +118,6 @@ RUN apt-get update \
   && DEBIAN_FRONTEND=noninteractive  apt-get install -y  --no-install-recommends \
     apt-utils \
     python3-setuptools \
-    libboost-serialization1.74.0 \
-    libboost-filesystem1.74.0 \
     libjsoncpp1 \
     gsl-bin \
     libfann2 \
