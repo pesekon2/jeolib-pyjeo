@@ -118,7 +118,6 @@ RUN apt-get update \
   && DEBIAN_FRONTEND=noninteractive  apt-get install -y  --no-install-recommends \
     apt-utils \
     python3-setuptools \
-    libjsoncpp1 \
     gsl-bin \
     libfann2 \
     fftw3 \
