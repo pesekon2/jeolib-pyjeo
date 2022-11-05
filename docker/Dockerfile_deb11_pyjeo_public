@@ -114,6 +114,7 @@ RUN apt-get update \
     python3-gdal \
   && rm -rf /var/lib/apt/lists/*
 
-FROM pyjeo AS pyjeo_prod
+# FROM registry.hub.docker.com/library/debian:10 as pyjeo
+# FROM pyjeo AS pyjeo_prod
 
 RUN rm -rf /usr/local/share/jeolib-pyjeo*
