@@ -108,8 +108,6 @@ RUN cd $INSTALL_HOME \
     && rm -rf $INSTALL_HOME/jeolib-pyjeo*
     #&& rm pyjeo.tar.gz
 
-# FROM registry.hub.docker.com/library/debian:10 as pyjeo
-
 # Env vars for paths, library versions
 ENV INSTALL_HOME=/home/install
 
@@ -135,12 +133,12 @@ RUN apt-get update \
     tar \
   && rm -rf /var/lib/apt/lists/*
 
-RUN python3 -c 'import sys; print(str(sys.version_info[0]) + "." + str(sys.version_info[1]))'
+# FROM registry.hub.docker.com/library/debian:10 as pyjeo
 
 RUN \
   mkdir -p /usr/local/lib/python3.9/dist-packages/jiplib
 
-COPY --from=pyjeo-dev /usr/local/lib/python3.9/dist-packages/pyjeo-1.0.8-py3.9.egg /usr/local/lib/python3.9/dist-packages
+COPY --from=pyjeo-dev /usr/local/lib/python3.9/dist-packages/pyjeo-v1.0.8-py3.9.egg /usr/local/lib/python3.9/dist-packages
 COPY --from=pyjeo-dev /usr/local/lib/python3.9/dist-packages/jiplib/__init__.py /usr/local/lib/python3.9/dist-packages/jiplib
 COPY --from=pyjeo-dev /usr/local/lib/python3.9/dist-packages/jiplib/_jiplib.so /usr/local/lib/python3.9/dist-packages/jiplib
 COPY --from=pyjeo-dev /usr/local/lib/python3.9/dist-packages/jiplib/jiplib.py /usr/local/lib/python3.9/dist-packages/jiplib
