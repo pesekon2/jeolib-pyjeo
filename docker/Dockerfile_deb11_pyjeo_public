@@ -133,12 +133,12 @@ RUN apt-get update \
     tar \
   && rm -rf /var/lib/apt/lists/*
 
-# FROM registry.hub.docker.com/library/debian:10 as pyjeo
+FROM registry.hub.docker.com/library/debian:10 as pyjeo
 
 RUN \
   mkdir -p /usr/local/lib/python3.9/dist-packages/jiplib
 
-COPY --from=pyjeo-dev /usr/local/lib/python3.9/dist-packages/pyjeo-v1.0.8-py3.9.egg /usr/local/lib/python3.9/dist-packages
+COPY --from=pyjeo-dev /usr/local/lib/python3.9/dist-packages/pyjeo-1.0.8-py3.9.egg /usr/local/lib/python3.9/dist-packages
 COPY --from=pyjeo-dev /usr/local/lib/python3.9/dist-packages/jiplib/__init__.py /usr/local/lib/python3.9/dist-packages/jiplib
 COPY --from=pyjeo-dev /usr/local/lib/python3.9/dist-packages/jiplib/_jiplib.so /usr/local/lib/python3.9/dist-packages/jiplib
 COPY --from=pyjeo-dev /usr/local/lib/python3.9/dist-packages/jiplib/jiplib.py /usr/local/lib/python3.9/dist-packages/jiplib
