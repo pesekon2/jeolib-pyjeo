@@ -34,7 +34,7 @@ jobs:
         with:
           fetch-depth: 0
       - name: Build docker
-        run: docker build -f docker/Dockerfile_deb11_pyjeo_public -t docker-pyjeo:1.0
+        run: docker build -f docker/Dockerfile_deb11_pyjeo_public . -t docker-pyjeo:1.0
       - name: Run the test suite
         run: |
           docker run --rm -v ${GITHUB_WORKSPACE}/tests:/tests:ro --cpus=2 -m 20g docker-pyjeo:1.0 python -W ignore -m unittest -v tests
